@@ -2,14 +2,17 @@ import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { ThemedText } from '@app/components/ThemedText';
-import { ThemedView } from '@app/components/ThemedView';
+import ThemedText from '@app/components/ThemedText';
+import ThemedView from '@app/components/ThemedView';
 import { Colors } from '@app/constants/Colors';
 
-export function Collapsible({
-  children,
-  title,
-}: PropsWithChildren & { title: string }) {
+interface Props {
+  title: string;
+}
+
+const Collapsible = (props: PropsWithChildren<Props>) => {
+  const { title, children } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? 'light';
 
@@ -30,7 +33,7 @@ export function Collapsible({
       {isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
     </ThemedView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   heading: {
@@ -43,3 +46,5 @@ const styles = StyleSheet.create({
     marginLeft: 24,
   },
 });
+
+export default Collapsible;

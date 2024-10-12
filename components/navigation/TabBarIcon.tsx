@@ -4,9 +4,12 @@ import { type ComponentProps } from 'react';
 import { type IconProps } from '@expo/vector-icons/build/createIconSet';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export function TabBarIcon({
-  style,
-  ...rest
-}: IconProps<ComponentProps<typeof Ionicons>['name']>) {
+const TabBarIcon = (
+  props: IconProps<ComponentProps<typeof Ionicons>['name']>,
+) => {
+  const { style, ...rest } = props;
+
   return <Ionicons size={28} style={[{ marginBottom: -3 }, style]} {...rest} />;
-}
+};
+
+export default TabBarIcon;
