@@ -12,7 +12,8 @@ const Layout = () => {
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
       </Stack>
     </Providers>
   );
