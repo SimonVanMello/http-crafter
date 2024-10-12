@@ -2,5 +2,20 @@
   "trailingComma": "all",
   "tabWidth": 2,
   "useTabs": false,
-  "singleQuote": true
+  "singleQuote": true,
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
+    "^(expo(.*)$)|^(expo$)",
+    "^(@react-navigation/(.*)$)",
+    "^(@expo/(.*)$)",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@app/(.*)$",
+    "",
+    "^[../]",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.5.0"
 }
