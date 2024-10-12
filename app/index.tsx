@@ -1,16 +1,11 @@
-import { Text, View } from 'react-native';
+import { Box } from '@app/components/gluestack-ui/box';
+import { Heading } from '@app/components/gluestack-ui/heading';
 
 const Page = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <Box className="flex-1 p-3 items-center">
+      <Heading>Hello world</Heading>
+    </Box>
   );
 };
 
