@@ -1,10 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-
 import ColorMode from '@app/types/ColorMode.type';
+import { atomWithAsyncStorage } from '@app/utils/jotai.utils';
 
-const storage = createJSONStorage<ColorMode>(() => AsyncStorage);
-
-const colorModeAtom = atomWithStorage<ColorMode>('colorMode', 'light', storage);
+const colorModeAtom = atomWithAsyncStorage<ColorMode>('colorMode', 'light');
 
 export default colorModeAtom;
