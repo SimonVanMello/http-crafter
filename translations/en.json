@@ -4,7 +4,9 @@
       "title": "Home"
     },
     "settings": {
-      "title": "Settings"
+      "title": "Settings",
+      "appearance": "Appearance",
+      "darkMode": "Dark mode"
     }
   }
 }
