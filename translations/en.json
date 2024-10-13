@@ -1,4 +1,7 @@
 {
+  "common": {
+    "back": "Back"
+  },
   "screens": {
     "home": {
       "title": "Home"

@@ -9,14 +9,20 @@ interface Props {
   title: string;
   className?: string;
   centerTitle?: boolean;
+  showBackButton?: boolean;
 }
 
 const PageView = (props: PropsWithChildren<Props>) => {
-  const { title, className, centerTitle, children, ...rest } = props;
+  const { title, className, centerTitle, showBackButton, children, ...rest } =
+    props;
 
   return (
     <SafeAreaView className="h-full bg-background-100 dark:bg-background-0">
-      <PageHeader title={title} centerTitle={centerTitle} />
+      <PageHeader
+        title={title}
+        centerTitle={centerTitle}
+        showBackButton={showBackButton}
+      />
       <ScrollView {...rest} contentContainerClassName={cn('p-4', className)}>
         {children}
       </ScrollView>
