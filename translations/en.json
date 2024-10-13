@@ -1,0 +1,12 @@
+{
+  "screens": {
+    "home": {
+      "title": "Home"
+    },
+    "settings": {
+      "title": "Settings",
+      "appearance": "Appearance",
+      "darkMode": "Dark mode"
+    }
+  }
+}

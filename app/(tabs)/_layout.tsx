@@ -1,37 +1,54 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import TabBarIcon from '@app/components/navigation/TabBarIcon';
+import useColorMode from '@app/hooks/useColorMode.hook';
+import useColors from '@app/hooks/useColors.hook';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const Layout = () => {
+  const { isDarkMode } = useColorMode();
+  const { getThemeColor } = useColors();
+  const { t } = useTranslation();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarStyle: {
+          backgroundColor: isDarkMode
+            ? getThemeColor('background', 0)
+            : getThemeColor('background', 100),
+        },
+        tabBarActiveTintColor: getThemeColor('primary', 500),
+        tabBarInactiveTintColor: getThemeColor('secondary', 500),
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
-          title: 'Home',
+          title: t('screens.home.title'),
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? 'home' : 'home-outline'}
+              color={color}
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="settings"
         options={{
-          title: 'Explore',
+          title: t('screens.settings.title'),
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon
+              name={focused ? 'settings' : 'settings-outline'}
+              color={color}
+            />
           ),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default Layout;
