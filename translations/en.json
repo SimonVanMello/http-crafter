@@ -1,3 +1,7 @@
 {
-  
+  "screens": {
+    "home": {
+      "title": "Home"
+    }
+  }
 }
