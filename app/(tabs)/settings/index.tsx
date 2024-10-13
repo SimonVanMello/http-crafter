@@ -1,4 +1,4 @@
-import SettingsScreen from '@app/screens/settings/Settings.screen';
+import SettingsScreen from '@app/features/settings/screens/Settings.screen';
 
 const Page = () => <SettingsScreen />;
 
