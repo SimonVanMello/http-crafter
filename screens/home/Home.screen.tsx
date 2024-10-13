@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { Button, ButtonText } from '@app/components/gluestack-ui/button';
@@ -19,6 +20,14 @@ const HomeScreen = () => {
         <Button onPress={toggleColorMode} className="mt-2">
           <ButtonText>Toggle color mode</ButtonText>
         </Button>
+      </Section>
+
+      <Section>
+        <Link href="/settings/details" asChild>
+          <Button>
+            <ButtonText>Navigate to settings details page</ButtonText>
+          </Button>
+        </Link>
       </Section>
     </PageView>
   );

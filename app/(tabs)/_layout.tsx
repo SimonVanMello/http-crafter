@@ -11,33 +11,43 @@ const Layout = () => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <Tabs
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: {
-            backgroundColor: isDarkMode
-              ? getThemeColor('background', 0)
-              : getThemeColor('background', 100),
-          },
-          tabBarActiveTintColor: getThemeColor('primary', 500),
-          tabBarInactiveTintColor: getThemeColor('secondary', 500),
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: isDarkMode
+            ? getThemeColor('background', 0)
+            : getThemeColor('background', 100),
+        },
+        tabBarActiveTintColor: getThemeColor('primary', 500),
+        tabBarInactiveTintColor: getThemeColor('secondary', 500),
+      }}
+    >
+      <Tabs.Screen
+        name="(home)"
+        options={{
+          title: t('screens.home.title'),
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? 'home' : 'home-outline'}
+              color={color}
+            />
+          ),
         }}
-      >
-        <Tabs.Screen
-          name="index"
-          options={{
-            title: t('screens.home.title'),
-            tabBarIcon: ({ color, focused }) => (
-              <TabBarIcon
-                name={focused ? 'home' : 'home-outline'}
-                color={color}
-              />
-            ),
-          }}
-        />
-      </Tabs>
-    </>
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: t('screens.settings.title'),
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? 'settings' : 'settings-outline'}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
 };
 

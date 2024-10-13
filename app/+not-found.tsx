@@ -1,15 +1,17 @@
-import { Link, Stack } from 'expo-router';
+import { Link } from 'expo-router';
 
-import { Box } from '@app/components/gluestack-ui/box';
+import { Button, ButtonText } from '@app/components/gluestack-ui/button';
+import PageView from '@app/components/page-view/PageView';
 
 const NotFound = () => {
   return (
-    <>
-      <Stack.Screen options={{ title: 'Oops! This screen doesn\'t exist.' }} />
-      <Box className="flex-1 justify-center items-center">
-        <Link href="/">Go to home screen</Link>
-      </Box>
-    </>
+    <PageView title="404 Not Found" centerTitle>
+      <Link className="text-typography-500 text-2xl" href="/" asChild>
+        <Button>
+          <ButtonText>Go back home</ButtonText>
+        </Button>
+      </Link>
+    </PageView>
   );
 };
 
