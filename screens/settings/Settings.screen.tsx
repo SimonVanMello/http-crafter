@@ -1,7 +1,5 @@
-import { Link } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonText } from '@app/components/gluestack-ui/button';
 import PageView from '@app/components/page-view/PageView';
 import Section from '@app/components/section/Section';
 import SectionSwitch from '@app/components/section/SectionSwitch';
@@ -19,13 +17,6 @@ const SettingsScreen = () => {
           value={isDarkMode}
           onChange={toggleColorMode}
         />
-      </Section>
-      <Section>
-        <Link href="/settings/details" asChild>
-          <Button>
-            <ButtonText>Navigate to details page</ButtonText>
-          </Button>
-        </Link>
       </Section>
     </PageView>
   );
