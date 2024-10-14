@@ -1,8 +1,9 @@
 import { Stack } from 'expo-router/stack';
 
 import '@app/global.css';
+import '@app/database';
 
-import Providers from '@app/components/Providers';
+import Providers from '@app/components/providers/Providers';
 
 if (__DEV__) {
   require('../ReactotronConfig');

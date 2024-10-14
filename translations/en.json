@@ -10,6 +10,9 @@
       "title": "Settings",
       "appearance": "Appearance",
       "darkMode": "Dark mode"
+    },
+    "apis": {
+      "title": "APIs"
     }
   }
 }
