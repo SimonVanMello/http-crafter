@@ -8,21 +8,23 @@ import {
 import Api from '@app/database/entities/Api.entity';
 import Protocol from '@app/enums/Protocol.enum';
 
+import useApis from '../hooks/useApis.hook';
+
 const AddMockApi = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { createApi } = useApis(false);
 
   const handlePress = async () => {
     try {
       setIsLoading(true);
 
       const api = new Api();
-
       api.name = 'Mock API';
       api.host = 'localhost';
       api.port = 3000;
       api.protocol = Protocol.HTTP;
 
-      await api.save();
+      await createApi(api);
     } catch (error) {
       console.log(error);
     } finally {
