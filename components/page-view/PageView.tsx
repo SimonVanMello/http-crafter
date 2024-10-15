@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { RefreshControl, SafeAreaView, ScrollView } from 'react-native';
 
 import cn from '@app/utils/cn.utils';
@@ -14,6 +14,7 @@ interface Props {
   asScrollView?: boolean;
   onRefresh?: () => void;
   isRefreshing?: boolean;
+  actions?: ReactNode;
 }
 
 const PageView = (props: PropsWithChildren<Props>) => {
@@ -25,6 +26,7 @@ const PageView = (props: PropsWithChildren<Props>) => {
     asScrollView = true,
     onRefresh,
     isRefreshing,
+    actions,
     children,
   } = props;
 
@@ -36,6 +38,7 @@ const PageView = (props: PropsWithChildren<Props>) => {
         title={title}
         centerTitle={centerTitle}
         showBackButton={showBackButton}
+        actions={actions}
       />
       {asScrollView && (
         <ScrollView

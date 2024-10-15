@@ -1,6 +1,6 @@
 {
   "common": {
-    "back": "Back"
+    "submit": "Submit"
   },
   "screens": {
     "home": {
@@ -13,6 +13,9 @@
     },
     "apis": {
       "title": "APIs"
+    },
+    "createApi": {
+      "title": "Create API"
     }
   }
 }

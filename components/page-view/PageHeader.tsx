@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { StatusBar } from 'expo-status-bar';
 
 import useColorMode from '@app/hooks/useColorMode.hook';
@@ -11,10 +12,11 @@ interface Props {
   title?: string;
   centerTitle?: boolean;
   showBackButton?: boolean;
+  actions?: ReactNode;
 }
 
 const PageHeader = (props: Props) => {
-  const { title, centerTitle, showBackButton } = props;
+  const { title, centerTitle, showBackButton, actions } = props;
 
   const { invertedColorMode } = useColorMode();
 
@@ -29,7 +31,15 @@ const PageHeader = (props: Props) => {
     >
       {/* TODO: update status bar background color for Android */}
       <StatusBar style={invertedColorMode} />
-      {showBackButton && <BackButton className="w-fit justify-start" />}
+      {showBackButton && (
+        <Box className="flex flex-row justify-between">
+          <BackButton className="w-fit justify-start" />
+          <Box>{actions}</Box>
+        </Box>
+      )}
+      {!showBackButton && (
+        <Box className="flex flex-row justify-end">{actions}</Box>
+      )}
       <Heading className="text-3xl">{title}</Heading>
     </Box>
   );

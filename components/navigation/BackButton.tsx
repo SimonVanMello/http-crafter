@@ -14,7 +14,7 @@ const BackButton = (props: Props) => {
 
   return (
     <Button variant="link" className={className} onPress={router.back}>
-      <ButtonIcon as={ChevronLeft} size="xl" />
+      <ButtonIcon as={ChevronLeft} />
     </Button>
   );
 };

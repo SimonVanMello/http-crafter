@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 
-import colorModeAtom from '@app/atoms/colorMode.atom';
+import colorModeAtom from '@app/features/settings/atoms/colorMode.atom';
 import ColorMode from '@app/types/ColorMode.type';
 
 const useColorMode = () => {

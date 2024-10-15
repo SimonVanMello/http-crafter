@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
 
-import apisAtom from '@app/atoms/apis.atom';
 import Api from '@app/database/entities/Api.entity';
+import apisAtom from '@app/features/apis/atoms/apis.atom';
 
 const useApis = (refreshOnMount = true) => {
   const [apis, setApis] = useAtom(apisAtom);
