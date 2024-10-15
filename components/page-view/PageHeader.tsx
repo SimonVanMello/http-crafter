@@ -8,7 +8,7 @@ import { Heading } from '../gluestack-ui/heading';
 import BackButton from '../navigation/BackButton';
 
 interface Props {
-  title: string;
+  title?: string;
   centerTitle?: boolean;
   showBackButton?: boolean;
 }
@@ -21,7 +21,7 @@ const PageHeader = (props: Props) => {
   return (
     <Box
       className={cn(
-        'h-16 flex flex-row items-center bg-background-100 px-4 dark:bg-background-0',
+        'flex justify-center gap-2 bg-background-100 px-4 dark:bg-background-0',
         {
           'justify-center': centerTitle && !showBackButton,
         },
@@ -29,12 +29,8 @@ const PageHeader = (props: Props) => {
     >
       {/* TODO: update status bar background color for Android */}
       <StatusBar style={invertedColorMode} />
-      {showBackButton && (
-        <Box className="w-1/3 border">
-          <BackButton className="w-fit justify-start" />
-        </Box>
-      )}
-      <Heading className="text-3xl w-1/3">{title}</Heading>
+      {showBackButton && <BackButton className="w-fit justify-start" />}
+      <Heading className="text-3xl">{title}</Heading>
     </Box>
   );
 };

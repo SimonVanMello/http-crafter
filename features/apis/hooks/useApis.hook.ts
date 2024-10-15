@@ -7,6 +7,7 @@ import Api from '@app/database/entities/Api.entity';
 const useApis = (refreshOnMount = true) => {
   const [apis, setApis] = useAtom(apisAtom);
   const [isRefreshing, setIsRefreshing] = useState(true);
+  const [isCreating, setIsCreating] = useState(false);
 
   const getApis = useCallback(async () => {
     setIsRefreshing(true);
@@ -17,8 +18,10 @@ const useApis = (refreshOnMount = true) => {
 
   const createApi = useCallback(
     async (api: Api) => {
+      setIsCreating(true);
       await api.save();
       getApis();
+      setIsCreating(false);
     },
     [getApis],
   );
@@ -29,7 +32,7 @@ const useApis = (refreshOnMount = true) => {
     }
   }, [getApis, refreshOnMount]);
 
-  return { apis, onRefresh: getApis, isRefreshing, createApi };
+  return { apis, onRefresh: getApis, isRefreshing, createApi, isCreating };
 };
 
 export default useApis;

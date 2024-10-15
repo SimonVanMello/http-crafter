@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { RefreshControl, SafeAreaView, ScrollView } from 'react-native';
 
 import cn from '@app/utils/cn.utils';
 
@@ -12,6 +12,8 @@ interface Props {
   centerTitle?: boolean;
   showBackButton?: boolean;
   asScrollView?: boolean;
+  onRefresh?: () => void;
+  isRefreshing?: boolean;
 }
 
 const PageView = (props: PropsWithChildren<Props>) => {
@@ -21,8 +23,12 @@ const PageView = (props: PropsWithChildren<Props>) => {
     centerTitle,
     showBackButton,
     asScrollView = true,
+    onRefresh,
+    isRefreshing,
     children,
   } = props;
+
+  const canRefresh = onRefresh && typeof isRefreshing === 'boolean';
 
   return (
     <SafeAreaView className="h-full bg-background-100 dark:bg-background-0">
@@ -32,7 +38,14 @@ const PageView = (props: PropsWithChildren<Props>) => {
         showBackButton={showBackButton}
       />
       {asScrollView && (
-        <ScrollView contentContainerClassName={cn('p-4', className)}>
+        <ScrollView
+          contentContainerClassName={cn('p-4', className)}
+          refreshControl={
+            canRefresh ? (
+              <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+            ) : undefined
+          }
+        >
           {children}
         </ScrollView>
       )}
