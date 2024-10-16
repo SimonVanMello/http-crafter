@@ -20,7 +20,7 @@ const CreateApiScreen = () => {
   };
 
   return (
-    <PageView title={t('screens.createApi.title')}>
+    <PageView title={t('screens.createApi.title')} showBackButton>
       <ApiForm initialValues={initialValues} onSubmit={handleSubmit} />
     </PageView>
   );

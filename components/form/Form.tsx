@@ -8,8 +8,6 @@ import {
 } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import cn from '@app/utils/cn.utils';
-
 import { Box } from '../gluestack-ui/box';
 import { Button, ButtonSpinner, ButtonText } from '../gluestack-ui/button';
 
@@ -34,10 +32,11 @@ const Form = <T extends FieldValues>(props: PropsWithChildren<Props<T>>) => {
 
   return (
     <FormProvider {...methods}>
-      <Box className={cn('gap-4', className)}>{children}</Box>
+      <Box className={className}>{children}</Box>
       <Button
         onPress={methods.handleSubmit(onSubmit)}
         isDisabled={methods.formState.isSubmitting}
+        className="mt-4"
       >
         {methods.formState.isSubmitting && <ButtonSpinner />}
         <ButtonText>{submitLabel}</ButtonText>

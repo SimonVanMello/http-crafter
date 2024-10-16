@@ -21,6 +21,7 @@ interface Props extends IInputFieldProps {
   helperText?: string;
 }
 
+// TODO: Update component's style to match IOS design system
 const Field = (props: Props) => {
   const { name, label, className, helperText, ...rest } = props;
 

@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { I18nextProvider } from 'react-i18next';
 
 import 'reflect-metadata';
@@ -15,9 +16,11 @@ const Providers = (props: PropsWithChildren) => {
   const { colorMode } = useColorMode();
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <GluestackUIProvider mode={colorMode}>{children}</GluestackUIProvider>
-    </I18nextProvider>
+    <GestureHandlerRootView>
+      <I18nextProvider i18n={i18n}>
+        <GluestackUIProvider mode={colorMode}>{children}</GluestackUIProvider>
+      </I18nextProvider>
+    </GestureHandlerRootView>
   );
 };
 

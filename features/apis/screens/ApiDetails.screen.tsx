@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Heading } from '@app/components/gluestack-ui/heading';
 import PageView from '@app/components/page-view/PageView';
 import Section from '@app/components/section/Section';
+import SectionItem from '@app/components/section/SectionItem';
 import LoadingScreen from '@app/screens/Loading.screen';
 
 import useApiById from '../hooks/useApiById.hook';
@@ -29,7 +30,9 @@ const ApiDetailsScreen = (props: Props) => {
       showBackButton
     >
       <Section>
-        <Heading>{api.url}</Heading>
+        <SectionItem>
+          <Heading>{api.url}</Heading>
+        </SectionItem>
       </Section>
     </PageView>
   );
