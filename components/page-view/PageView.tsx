@@ -42,7 +42,7 @@ const PageView = (props: PropsWithChildren<Props>) => {
       />
       {asScrollView && (
         <ScrollView
-          contentContainerClassName={cn('p-4', className)}
+          contentContainerClassName={cn('px-4 pt-4', className)}
           refreshControl={
             canRefresh ? (
               <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
@@ -53,7 +53,7 @@ const PageView = (props: PropsWithChildren<Props>) => {
         </ScrollView>
       )}
       {!asScrollView && (
-        <Box className={cn('p-4 flex-1', className)}>{children}</Box>
+        <Box className={cn('px-4 pt-4 flex-1', className)}>{children}</Box>
       )}
     </SafeAreaView>
   );

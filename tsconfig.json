@@ -5,6 +5,7 @@
     "paths": {
       "@app/*": ["./*"]
     },
+    "jsx": "react-native",
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,

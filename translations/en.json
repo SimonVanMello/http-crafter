@@ -1,6 +1,12 @@
 {
   "common": {
-    "submit": "Submit"
+    "submit": "Submit",
+    "toasts": {
+      "success": "Success",
+      "error": "Error",
+      "errorDescription": "An error occurred",
+      "info": "Info"
+    }
   },
   "screens": {
     "home": {

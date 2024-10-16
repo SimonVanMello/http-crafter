@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import Toast from 'react-native-toast-message';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { I18nextProvider } from 'react-i18next';
 
@@ -25,6 +26,7 @@ const Providers = (props: PropsWithChildren) => {
           <GluestackUIProvider mode={colorMode}>{children}</GluestackUIProvider>
         </QueryClientProvider>
       </I18nextProvider>
+      <Toast />
     </GestureHandlerRootView>
   );
 };
