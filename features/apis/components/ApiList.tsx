@@ -1,19 +1,20 @@
 import { FlatList } from 'react-native';
+import { useAtom } from 'jotai';
 
-import useApis from '../hooks/useApis.hook';
+import { apisAtom } from '../atoms/apis.atoms';
 import ApiListItem from './ApiListItem';
 
 const ApiList = () => {
-  const { apis, isRefreshing, onRefresh } = useApis();
+  const [{ data, isPending, refetch }] = useAtom(apisAtom);
 
   return (
     <FlatList
-      data={apis}
+      data={data}
       keyExtractor={(item) => item.id.toString()}
-      renderItem={({ item }) => <ApiListItem api={item} />}
+      renderItem={({ item }) => <ApiListItem key={item.id} api={item} />}
       contentContainerClassName="gap-4"
-      onRefresh={onRefresh}
-      refreshing={isRefreshing}
+      onRefresh={refetch}
+      refreshing={isPending}
     />
   );
 };

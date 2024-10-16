@@ -1,3 +1,5 @@
+import { useAtom } from 'jotai';
+
 import {
   Button,
   ButtonSpinner,
@@ -6,20 +8,21 @@ import {
 import Api from '@app/database/entities/Api.entity';
 import Protocol from '@app/enums/Protocol.enum';
 
-import useApis from '../hooks/useApis.hook';
+import { createApiAtom } from '../atoms/apis.atoms';
 
 const AddMockApi = () => {
-  const { createApi, isCreating } = useApis(false);
+  const [{ mutateAsync, isPending }] = useAtom(createApiAtom);
 
   const handlePress = async () => {
     try {
       const api = new Api();
+
       api.name = 'Mock API';
       api.host = 'localhost';
       api.port = 3000;
       api.protocol = Protocol.HTTP;
 
-      await createApi(api);
+      await mutateAsync(api);
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +30,7 @@ const AddMockApi = () => {
 
   return (
     <Button onPress={handlePress}>
-      {isCreating && <ButtonSpinner />}
+      {isPending && <ButtonSpinner />}
       <ButtonText>Add Mock API</ButtonText>
     </Button>
   );

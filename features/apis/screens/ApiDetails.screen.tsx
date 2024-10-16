@@ -1,4 +1,5 @@
-import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
+import { useAtom } from 'jotai';
 
 import { Heading } from '@app/components/gluestack-ui/heading';
 import PageView from '@app/components/page-view/PageView';
@@ -6,7 +7,7 @@ import Section from '@app/components/section/Section';
 import SectionItem from '@app/components/section/SectionItem';
 import LoadingScreen from '@app/screens/Loading.screen';
 
-import useApiById from '../hooks/useApiById.hook';
+import { apiAtom } from '../atoms/apis.atoms';
 
 interface Props {
   apiId: number;
@@ -15,23 +16,23 @@ interface Props {
 const ApiDetailsScreen = (props: Props) => {
   const { apiId } = props;
 
-  const { api, onRefresh, isLoading } = useApiById(apiId);
-  const { t } = useTranslation();
+  const atom = useMemo(() => apiAtom(apiId), [apiId]);
+  const [{ data, isPending, refetch }] = useAtom(atom);
 
-  if (!api) {
+  if (!data) {
     return <LoadingScreen />;
   }
 
   return (
     <PageView
-      title={api.name}
-      onRefresh={onRefresh}
-      isRefreshing={isLoading}
+      title={data.name}
+      onRefresh={refetch}
+      isRefreshing={isPending}
       showBackButton
     >
       <Section>
         <SectionItem>
-          <Heading>{api.url}</Heading>
+          <Heading>{data.url}</Heading>
         </SectionItem>
       </Section>
     </PageView>
