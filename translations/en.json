@@ -20,6 +20,10 @@
     "apis": {
       "title": "APIs"
     },
+    "apiDetails": {
+      "editApi": "Edit API",
+      "deleteApi": "Delete API"
+    },
     "createApi": {
       "title": "Create API"
     }

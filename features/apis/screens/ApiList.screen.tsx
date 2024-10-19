@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { Plus } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonIcon } from '@app/components/gluestack-ui/button';
+import HeaderActionButton from '@app/components/HeaderActionButton';
 import PageView from '@app/components/page-view/PageView';
 
 import ApiList from '../components/ApiList';
@@ -16,9 +16,10 @@ const ApiListScreen = () => {
       title={t('screens.apis.title')}
       asScrollView={false}
       actions={
-        <Button variant="link" onPress={() => router.push('/apis/create')}>
-          <ButtonIcon as={Plus} />
-        </Button>
+        <HeaderActionButton
+          icon={Plus}
+          onPress={() => router.push('/apis/create')}
+        />
       }
     >
       <ApiList />

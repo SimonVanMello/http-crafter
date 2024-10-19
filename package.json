@@ -18,6 +18,7 @@
   "dependencies": {
     "@expo/html-elements": "^0.4.2",
     "@expo/vector-icons": "^14.0.2",
+    "@gluestack-ui/actionsheet": "^0.2.45",
     "@gluestack-ui/button": "^1.0.7",
     "@gluestack-ui/divider": "^0.1.9",
     "@gluestack-ui/form-control": "^0.1.18",
@@ -28,6 +29,7 @@
     "@gluestack-ui/spinner": "^0.1.14",
     "@gluestack-ui/switch": "^0.1.22",
     "@gluestack-ui/toast": "^1.0.7",
+    "@legendapp/motion": "^2.4.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^6.0.2",
     "@tanstack/query-core": "^5.59.13",

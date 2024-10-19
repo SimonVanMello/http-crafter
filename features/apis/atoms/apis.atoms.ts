@@ -35,3 +35,18 @@ export const createApiAtom = atomWithMutation(() => {
     },
   };
 });
+
+export const deleteApiAtom = atomWithMutation(() => {
+  const queryClient = useQueryClient();
+
+  return {
+    mutationFn: async (id: number) => {
+      await Api.delete(id);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['apis'],
+      });
+    },
+  };
+});
