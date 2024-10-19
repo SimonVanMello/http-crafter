@@ -5,7 +5,6 @@ import { Text } from '@app/components/gluestack-ui/text';
 import PageView from '@app/components/page-view/PageView';
 import Section from '@app/components/section/Section';
 import SectionItem from '@app/components/section/SectionItem';
-import AddMockApi from '@app/features/apis/components/AddMockApi';
 
 const HomeScreen = () => {
   const { t } = useTranslation();
@@ -18,7 +17,6 @@ const HomeScreen = () => {
           <Text>Text</Text>
         </SectionItem>
       </Section>
-      <AddMockApi />
     </PageView>
   );
 };
