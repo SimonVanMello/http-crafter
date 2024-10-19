@@ -1,6 +1,5 @@
 {
   "common": {
-    "submit": "Submit",
     "cancel": "Cancel",
     "delete": "Delete",
     "toasts": {
@@ -8,6 +7,11 @@
       "error": "Error",
       "errorDescription": "An error occurred",
       "info": "Info"
+    },
+    "forms": {
+      "submit": "Submit",
+      "required": "required",
+      "optional": "optional"
     }
   },
   "screens": {

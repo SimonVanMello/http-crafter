@@ -23,7 +23,7 @@ const Form = <T extends FieldValues>(props: PropsWithChildren<Props<T>>) => {
   const {
     initialValues,
     onSubmit,
-    submitLabel = t('common.submit'),
+    submitLabel = t('common.forms.submit'),
     className,
     children,
   } = props;
