@@ -6,7 +6,7 @@ import useColors from '@app/hooks/useColors.hook';
 import { Box } from '../gluestack-ui/box';
 import { Heading } from '../gluestack-ui/heading';
 import { Text } from '../gluestack-ui/text';
-import SectionItem from './SectionItem';
+import TouchableSectionItem from './TouchableSectionItem';
 
 interface Props<T extends string | object> extends LinkProps<T> {
   label: string;
@@ -20,13 +20,13 @@ const SectionLink = <T extends string | object>(props: Props<T>) => {
 
   return (
     <Link {...rest} href={href} asChild>
-      <SectionItem className="flex flex-row justify-between items-center transition active:bg-background-200">
+      <TouchableSectionItem className="flex flex-row justify-between items-center transition active:bg-background-200">
         <Box className="flex flex-1">
           <Heading numberOfLines={1}>{label}</Heading>
           {!!description && <Text numberOfLines={1}>{description}</Text>}
         </Box>
         <ChevronRight color={getThemeColor('typography', 500)} />
-      </SectionItem>
+      </TouchableSectionItem>
     </Link>
   );
 };

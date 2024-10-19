@@ -18,7 +18,7 @@ const HomeScreen = () => {
           <Text>Text</Text>
         </SectionItem>
       </Section>
-      <AddMockApi />
+      {/* <AddMockApi /> */}
     </PageView>
   );
 };
