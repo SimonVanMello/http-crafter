@@ -1,6 +1,8 @@
 {
   "common": {
     "submit": "Submit",
+    "cancel": "Cancel",
+    "delete": "Delete",
     "toasts": {
       "success": "Success",
       "error": "Error",
@@ -22,7 +24,8 @@
     },
     "apiDetails": {
       "editApi": "Edit API",
-      "deleteApi": "Delete API"
+      "deleteApi": "Delete API",
+      "deleteApiConfirmation": "Are you sure you want to delete this API? This action cannot be undone."
     },
     "createApi": {
       "title": "Create API"
