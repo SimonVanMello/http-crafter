@@ -32,7 +32,11 @@
       "deleteApiConfirmation": "Are you sure you want to delete this API? This action cannot be undone."
     },
     "createApi": {
-      "title": "Create API"
+      "title": "Create API",
+      "name": "Name",
+      "protocol": "Protocol",
+      "host": "Host",
+      "port": "Port"
     }
   }
 }
