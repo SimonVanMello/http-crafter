@@ -1,13 +1,10 @@
+import { KeyboardTypeOptions } from 'react-native';
 import { IInputFieldProps } from '@gluestack-ui/input/lib/typescript/types';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext, ValidationRule } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import {
   FormControl,
-  // FormControlError,
-  // FormControlErrorIcon,
-  // FormControlErrorText,
-  // FormControlHelper,
   FormControlLabel,
   FormControlLabelText,
 } from '../gluestack-ui/form-control';
@@ -17,60 +14,85 @@ import SectionItem from '../section/SectionItem';
 interface Props extends IInputFieldProps {
   name: string;
   label: string;
+  type?: 'text' | 'password';
   className?: string;
-  helperText?: string;
+  maxLength?: number;
+  minLength?: number;
+  max?: number;
+  min?: number;
+  pattern?: ValidationRule<RegExp>;
+  validate?: (value: string) => boolean;
+  keyboardType?: KeyboardTypeOptions;
+  autoCorrect?: boolean;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }
 
 const Field = (props: Props) => {
-  const { name, label, className, helperText, ...rest } = props;
+  const {
+    name,
+    label,
+    type = 'text',
+    className,
+    maxLength,
+    minLength,
+    max,
+    min,
+    pattern,
+    validate,
+    keyboardType,
+    autoCorrect = false,
+    autoCapitalize = 'none',
+    ...rest
+  } = props;
 
   const { t } = useTranslation();
 
-  const {
-    register,
-    setValue,
-    getFieldState,
-    formState: { errors },
-  } = useFormContext();
+  const { control, getFieldState } = useFormContext();
   const { invalid, isTouched } = getFieldState(name);
-
-  const field = register(name, { required: props.isRequired });
 
   return (
     <FormControl className={className} isInvalid={isTouched && invalid}>
       <SectionItem className="flex flex-row items-center">
-        <FormControlLabel className="w-1/3">
+        <FormControlLabel className="w-1/3 mt-1">
           <FormControlLabelText className="font-bold">
             {label}
           </FormControlLabelText>
         </FormControlLabel>
-        <Input className="w-2/3 border-0">
-          <InputField
-            tabIndex={0}
-            {...rest}
-            {...field}
-            onChangeText={(value) => setValue(name, value)}
-            placeholder={
-              props.isRequired
-                ? t('common.forms.required')
-                : t('common.forms.optional')
-            }
-          />
-        </Input>
+
+        <Controller
+          control={control}
+          name={name}
+          rules={{
+            required: props.isRequired,
+            maxLength,
+            minLength,
+            max,
+            min,
+            pattern,
+            validate,
+          }}
+          disabled={props.isDisabled}
+          render={({ field }) => (
+            <Input className="w-2/3 border-0 h-7">
+              <InputField
+                tabIndex={0}
+                {...rest}
+                {...field}
+                type={type}
+                keyboardType={keyboardType}
+                autoCapitalize={autoCapitalize}
+                autoCorrect={autoCorrect}
+                onChangeText={(value) => field.onChange(value)}
+                placeholder={
+                  props.isRequired
+                    ? t('common.forms.required')
+                    : t('common.forms.optional')
+                }
+              />
+            </Input>
+          )}
+        />
       </SectionItem>
-      {/* {!!helperText && (
-        <FormControlHelper>
-          <FormControlHelperText>{helperText}</FormControlHelperText>
-        </FormControlHelper>
-      )}
-      {!!errors[name] && (
-        <FormControlError>
-          <FormControlErrorIcon as={AlertCircleIcon} />
-          <FormControlErrorText>
-            {errors[name]?.message?.toString()}
-          </FormControlErrorText>
-        </FormControlError>
-      )} */}
     </FormControl>
   );
 };

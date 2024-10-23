@@ -1,5 +1,6 @@
 import Field from '@app/components/form/Field';
 import Form from '@app/components/form/Form';
+import PickerField from '@app/components/form/PickerField';
 import { Divider } from '@app/components/gluestack-ui/divider';
 import Section from '@app/components/section/Section';
 
@@ -18,11 +19,23 @@ const ApiForm = (props: Props) => {
       <Section>
         <Field name="name" label="Name" isRequired />
         <Divider />
-        <Field name="protocol" label="Protocol" isRequired />
+        <PickerField
+          label="Protocol"
+          name="protocol"
+          items={[{ value: 'http' }, { value: 'https' }]}
+          labelSelector={(item) => item.value}
+          valueSelector={(item) => item.value}
+        />
         <Divider />
         <Field name="host" label="Host" isRequired />
         <Divider />
-        <Field name="port" label="Port" isRequired />
+        <Field
+          name="port"
+          label="Port"
+          isRequired
+          max={65535}
+          keyboardType="numeric"
+        />
       </Section>
     </Form>
   );

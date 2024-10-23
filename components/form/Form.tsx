@@ -35,7 +35,9 @@ const Form = <T extends FieldValues>(props: PropsWithChildren<Props<T>>) => {
       <Box className={className}>{children}</Box>
       <Button
         onPress={methods.handleSubmit(onSubmit)}
-        isDisabled={methods.formState.isSubmitting}
+        isDisabled={
+          methods.formState.isSubmitting || !methods.formState.isValid
+        }
         className="mt-4"
       >
         {methods.formState.isSubmitting && <ButtonSpinner />}
