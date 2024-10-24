@@ -27,11 +27,9 @@ const CreateApiScreen = () => {
   const handleSubmit = async (values: CreateApi) => {
     try {
       const api = Api.fromCreateApi(values);
-      console.log(api);
       await mutateAsync(api);
       router.push('/apis');
     } catch {
-      // TODO: add error handling
       toast.error();
     }
   };

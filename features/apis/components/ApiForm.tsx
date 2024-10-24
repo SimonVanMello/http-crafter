@@ -1,3 +1,4 @@
+import { DefaultValues } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import Field from '@app/components/form/Field';
@@ -9,12 +10,12 @@ import Protocol from '@app/enums/Protocol.enum';
 
 import CreateApi from '../models/CreateApi.model';
 
-interface Props {
-  initialValues: CreateApi;
-  onSubmit: (values: CreateApi) => void;
+interface Props<T extends CreateApi> {
+  initialValues: DefaultValues<T>;
+  onSubmit: (values: T) => void;
 }
 
-const ApiForm = (props: Props) => {
+const ApiForm = <T extends CreateApi>(props: Props<T>) => {
   const { initialValues, onSubmit } = props;
 
   const { t } = useTranslation();
@@ -23,14 +24,14 @@ const ApiForm = (props: Props) => {
     <Form initialValues={initialValues} onSubmit={onSubmit}>
       <Section>
         <Field
-          label={t('screens.createApi.name')}
+          label={t('features.apis.name')}
           name="name"
           isRequired
           autoCapitalize="sentences"
         />
         <Divider />
         <PickerField
-          label={t('screens.createApi.protocol')}
+          label={t('features.apis.protocol')}
           name="protocol"
           items={Object.values(Protocol)}
           labelSelector={(item) => item}
@@ -38,14 +39,14 @@ const ApiForm = (props: Props) => {
         />
         <Divider />
         <Field
-          label={t('screens.createApi.host')}
+          label={t('features.apis.host')}
           name="host"
           isRequired
           keyboardType="url"
         />
         <Divider />
         <Field
-          label={t('screens.createApi.port')}
+          label={t('features.apis.port')}
           name="port"
           isRequired
           max={65535}

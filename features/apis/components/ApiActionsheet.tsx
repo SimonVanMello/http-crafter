@@ -26,13 +26,16 @@ const ApiActionsheet = (props: Props) => {
   const deleteApiDialog = useDisclosure();
   const [deleteApi] = useAtom(deleteApiAtom);
 
-  const handleEditPress = async () => {};
+  const handleEditPress = async () => {
+    onClose();
+    router.push(`/apis/${apiId}/edit`);
+  };
 
   const handleDeletePress = async () => {
     try {
       await deleteApi.mutateAsync(apiId);
       onClose();
-      router.push('/apis');
+      router.navigate('/apis');
     } catch {
       toast.error();
     }
