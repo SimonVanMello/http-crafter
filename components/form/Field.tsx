@@ -79,6 +79,7 @@ const Field = (props: Props) => {
                 {...rest}
                 {...field}
                 type={type}
+                value={field.value.toString()}
                 keyboardType={keyboardType}
                 autoCapitalize={autoCapitalize}
                 autoCorrect={autoCorrect}
