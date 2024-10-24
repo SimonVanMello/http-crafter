@@ -1,5 +1,6 @@
 type ParamsItem = string | { [key: string]: boolean | undefined } | undefined;
 
+// 🤮 (it works tho)
 const cn = (...params: ParamsItem[]): string | undefined => {
   if (!Array.isArray(params)) {
     return params;

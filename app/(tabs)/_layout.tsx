@@ -36,6 +36,18 @@ const Layout = () => {
         }}
       />
       <Tabs.Screen
+        name="apis"
+        options={{
+          title: t('screens.apis.title'),
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? 'list' : 'list-outline'}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="settings"
         options={{
           title: t('screens.settings.title'),

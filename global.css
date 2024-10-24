@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define styles in the components layer to be able to override using utily classes  */
+@layer components {
+  .card {
+    @apply bg-background-0 rounded overflow-hidden dark:bg-background-50;
+  }
+}

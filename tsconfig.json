@@ -4,7 +4,13 @@
     "strict": true,
     "paths": {
       "@app/*": ["./*"]
-    }
+    },
+    "jsx": "react-native",
+    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

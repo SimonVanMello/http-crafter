@@ -1,4 +1,19 @@
 {
+  "common": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "toasts": {
+      "success": "Success",
+      "error": "Error",
+      "errorDescription": "An error occurred",
+      "info": "Info"
+    },
+    "forms": {
+      "submit": "Submit",
+      "required": "required",
+      "optional": "optional"
+    }
+  },
   "screens": {
     "home": {
       "title": "Home"
@@ -7,6 +22,28 @@
       "title": "Settings",
       "appearance": "Appearance",
       "darkMode": "Dark mode"
+    },
+    "apis": {
+      "title": "APIs"
+    },
+    "apiDetails": {
+      "editApi": "Edit API",
+      "deleteApi": "Delete API",
+      "deleteApiConfirmation": "Are you sure you want to delete this API? This action cannot be undone."
+    },
+    "createApi": {
+      "title": "Create API"
+    },
+    "editApi": {
+      "title": "Edit API"
+    }
+  },
+  "features": {
+    "apis": {
+      "name": "Name",
+      "protocol": "Protocol",
+      "host": "Host",
+      "port": "Port"
     }
   }
 }

@@ -1,23 +1,24 @@
-import { useAtom } from 'jotai';
+import { useColorScheme } from 'nativewind';
 
-import colorModeAtom from '@app/atoms/colorMode.atom';
 import ColorMode from '@app/types/ColorMode.type';
 
-const useColorMode = () => {
-  const [colorMode, setColorMode] = useAtom(colorModeAtom);
+const defaultColorMode = 'dark';
 
-  const isDarkMode = colorMode === 'dark';
+const useColorMode = () => {
+  const { colorScheme, setColorScheme } = useColorScheme();
+
+  const isDarkMode = colorScheme === 'dark';
   const invertedColorMode: ColorMode = isDarkMode ? 'light' : 'dark';
 
   const toggleColorMode = () => {
-    setColorMode((mode) => (mode === 'light' ? 'dark' : 'light'));
+    setColorScheme(isDarkMode ? 'light' : 'dark');
   };
 
   return {
-    colorMode,
+    colorMode: colorScheme || defaultColorMode,
     invertedColorMode,
     isDarkMode,
-    setColorMode,
+    setColorMode: setColorScheme,
     toggleColorMode,
   };
 };

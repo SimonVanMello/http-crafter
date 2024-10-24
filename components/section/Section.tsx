@@ -17,13 +17,7 @@ const Section = (props: PropsWithChildren<Props>) => {
       {!!title && (
         <Text className="px-4 text-md text-typography-400">{title}</Text>
       )}
-      <Box
-        className={cn(
-          'bg-background-0 rounded px-4 py-2 dark:bg-background-50',
-          className,
-        )}
-        {...rest}
-      >
+      <Box className={cn('card', className)} {...rest}>
         {children}
       </Box>
     </Box>
