@@ -18,7 +18,7 @@ const HydrateAtoms = ({ children }: PropsWithChildren) => {
   return children;
 };
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const Providers = (props: PropsWithChildren) => {
   const { children } = props;

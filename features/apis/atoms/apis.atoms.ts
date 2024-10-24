@@ -1,6 +1,6 @@
-import { useQueryClient } from '@tanstack/react-query';
 import { atomWithMutation, atomWithQuery } from 'jotai-tanstack-query';
 
+import { queryClient } from '@app/components/providers/Providers';
 import Api from '@app/database/entities/Api.entity';
 
 export const apiAtom = (id: number) =>
@@ -21,32 +21,24 @@ export const apisAtom = atomWithQuery(() => ({
   },
 }));
 
-export const createApiAtom = atomWithMutation(() => {
-  const queryClient = useQueryClient();
+export const createApiAtom = atomWithMutation(() => ({
+  mutationFn: async (api: Api) => {
+    await api.save();
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({
+      queryKey: ['apis'],
+    });
+  },
+}));
 
-  return {
-    mutationFn: async (api: Api) => {
-      await api.save();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['apis'],
-      });
-    },
-  };
-});
-
-export const deleteApiAtom = atomWithMutation(() => {
-  const queryClient = useQueryClient();
-
-  return {
-    mutationFn: async (id: number) => {
-      await Api.delete(id);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['apis'],
-      });
-    },
-  };
-});
+export const deleteApiAtom = atomWithMutation(() => ({
+  mutationFn: async (id: number) => {
+    await Api.delete(id);
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({
+      queryKey: ['apis'],
+    });
+  },
+}));
