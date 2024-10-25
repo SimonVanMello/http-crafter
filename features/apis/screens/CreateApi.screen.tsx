@@ -13,7 +13,7 @@ import CreateApi from '../models/CreateApi.model';
 const initialValues: CreateApi = {
   name: '',
   host: '',
-  port: 0,
+  port: 443,
   protocol: 'https',
 };
 

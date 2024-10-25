@@ -11,7 +11,7 @@ import useDisclosure from '@app/hooks/useDisclosure';
 import { deleteApiAtom } from '../atoms/apis.atoms';
 
 interface Props {
-  apiId: number;
+  apiId: string;
   isOpen: boolean;
   onClose: () => void;
 }

@@ -12,7 +12,7 @@ import { apiAtom, updateApiAtom } from '../atoms/apis.atoms';
 import ApiForm from '../components/ApiForm';
 
 interface Props {
-  apiId: number;
+  apiId: string;
 }
 
 const EditApiScreen = (props: Props) => {

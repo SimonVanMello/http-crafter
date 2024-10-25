@@ -6,6 +6,7 @@ import { queryClientAtom } from 'jotai-tanstack-query';
 import { useHydrateAtoms } from 'jotai/react/utils';
 import { I18nextProvider } from 'react-i18next';
 
+import 'react-native-get-random-values';
 import 'reflect-metadata';
 
 import GluestackUIProvider from '@app/components/gluestack-ui/gluestack-ui-provider';

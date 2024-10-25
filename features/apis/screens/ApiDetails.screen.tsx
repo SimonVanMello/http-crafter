@@ -11,7 +11,7 @@ import { apiAtom } from '../atoms/apis.atoms';
 import ApiActionsheetButton from '../components/ApiActionsheetButton';
 
 interface Props {
-  apiId: number;
+  apiId: string;
 }
 
 const ApiDetailsScreen = (props: Props) => {

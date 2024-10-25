@@ -6,7 +6,7 @@ import useDisclosure from '@app/hooks/useDisclosure';
 import ApiActionsheet from './ApiActionsheet';
 
 interface Props {
-  apiId: number;
+  apiId: string;
 }
 
 const ApiActionsheetButton = (props: Props) => {

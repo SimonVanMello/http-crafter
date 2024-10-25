@@ -5,7 +5,7 @@ import EditApiScreen from '@app/features/apis/screens/EditApi.screen';
 const Page = () => {
   const { id } = useLocalSearchParams();
 
-  return <EditApiScreen apiId={parseInt(id.toString(), 10)} />;
+  return <EditApiScreen apiId={id.toString()} />;
 };
 
 export default Page;

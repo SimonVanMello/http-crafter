@@ -14,12 +14,12 @@ export const apisAtom = atomWithQuery(
   () => queryClient,
 );
 
-export const apiAtom = (id: number) =>
+export const apiAtom = (id: string) =>
   atomWithQuery(
     () => ({
       queryKey: ['apis', id],
       queryFn: async ({ queryKey: [, id] }) => {
-        const api = await Api.findOneBy({ id: id as number });
+        const api = await Api.findOneBy({ id });
 
         return api;
       },
@@ -39,7 +39,7 @@ export const createApiAtom = atomWithMutation(() => ({
 }));
 
 export const deleteApiAtom = atomWithMutation(() => ({
-  mutationFn: async (id: number) => {
+  mutationFn: async (id: string) => {
     await Api.delete(id);
   },
   onSuccess: () => {
