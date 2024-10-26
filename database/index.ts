@@ -3,14 +3,15 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 
 import Api from './entities/Api.entity';
+import Folder from './entities/Folder.entity';
 
 const context = new DataSource({
   type: 'react-native',
-  database: 'test',
+  database: 'default',
   location: 'default',
   logging: ['error', 'query', 'schema'],
   synchronize: true,
-  entities: [Api],
+  entities: [Api, Folder],
 });
 
 context

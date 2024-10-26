@@ -5,21 +5,21 @@ import { Heading } from '@app/components/gluestack-ui/heading';
 import PageView from '@app/components/page-view/PageView';
 import Section from '@app/components/section/Section';
 import SectionItem from '@app/components/section/SectionItem';
-import AddMockFolder from '@app/features/folders/components/AddMockFolder';
-import FolderList from '@app/features/folders/components/FolderList';
 import LoadingScreen from '@app/screens/Loading.screen';
 
-import { apiAtom } from '../atoms/apis.atoms';
-import ApiActionsheetButton from '../components/ApiActionsheetButton';
+import { folderAtom } from '../atoms/folders.atoms';
+import AddMockFolder from '../components/AddMockFolder';
+import FolderList from '../components/FolderList';
 
 interface Props {
   apiId: string;
+  folderId: string;
 }
 
-const ApiDetailsScreen = (props: Props) => {
-  const { apiId } = props;
+const FolderDetailsScreen = (props: Props) => {
+  const { apiId, folderId } = props;
 
-  const atom = useMemo(() => apiAtom(apiId), [apiId]);
+  const atom = useMemo(() => folderAtom(folderId), [folderId]);
   const [{ data, isPending, refetch }] = useAtom(atom);
 
   if (!data) {
@@ -32,19 +32,23 @@ const ApiDetailsScreen = (props: Props) => {
       onRefresh={refetch}
       isRefreshing={isPending}
       showBackButton
-      actions={<ApiActionsheetButton apiId={apiId} />}
+      backButtonHref={
+        data.parent
+          ? `/apis/${apiId}/folders/${data.parent.id}`
+          : `/apis/${apiId}`
+      }
     >
       <Section>
         <SectionItem>
-          <Heading>{data.url}</Heading>
+          <Heading>{data.name}</Heading>
         </SectionItem>
       </Section>
-      {!!data.folders.length && (
-        <FolderList apiId={apiId} folders={data.folders} />
+      {!!data.children.length && (
+        <FolderList apiId={apiId} folders={data.children} />
       )}
-      <AddMockFolder api={data} />
+      <AddMockFolder parentFolder={data} />
     </PageView>
   );
 };
 
-export default ApiDetailsScreen;
+export default FolderDetailsScreen;

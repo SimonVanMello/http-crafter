@@ -8,7 +8,7 @@ const SettingsScreen = () => {
   const { t } = useTranslation();
 
   return (
-    <PageView title={t('screens.settings.title')} className="gap-4">
+    <PageView title={t('screens.settings.title')}>
       <Section title={t('screens.settings.appearance')}>
         <DarkModeSwitch />
       </Section>

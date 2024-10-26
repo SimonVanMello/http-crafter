@@ -10,7 +10,7 @@ const ApiList = () => {
   return (
     <FlatList
       data={data}
-      keyExtractor={(item) => item.id.toString()}
+      keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ApiListItem key={item.id} api={item} />}
       contentContainerClassName="gap-4"
       onRefresh={refetch}

@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const { t } = useTranslation();
 
   return (
-    <PageView title={t('screens.home.title')} className="gap-4">
+    <PageView title={t('screens.home.title')}>
       <Section>
         <SectionItem>
           <Heading>Hello world!</Heading>

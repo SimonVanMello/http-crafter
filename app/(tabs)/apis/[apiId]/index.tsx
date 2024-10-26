@@ -3,9 +3,9 @@ import { useLocalSearchParams } from 'expo-router';
 import ApiDetailsScreen from '@app/features/apis/screens/ApiDetails.screen';
 
 const Page = () => {
-  const { id } = useLocalSearchParams();
+  const { apiId } = useLocalSearchParams();
 
-  return <ApiDetailsScreen apiId={id.toString()} />;
+  return <ApiDetailsScreen apiId={apiId.toString()} />;
 };
 
 export default Page;

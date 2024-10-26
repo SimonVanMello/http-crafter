@@ -36,6 +36,9 @@
     },
     "editApi": {
       "title": "Edit API"
+    },
+    "folders": {
+      "title": "Folders"
     }
   },
   "features": {
@@ -44,6 +47,9 @@
       "protocol": "Protocol",
       "host": "Host",
       "port": "Port"
+    },
+    "folders": {
+      "name": "Name"
     }
   }
 }

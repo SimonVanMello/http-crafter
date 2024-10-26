@@ -1,11 +1,12 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 
 import CreateApi from '@app/features/apis/models/CreateApi.model';
 
-import Base from './Base.entity';
+import BaseEntity from './Base.entity';
+import Folder from './Folder.entity';
 
 @Entity('api')
-class Api extends Base {
+class Api extends BaseEntity {
   @Column()
   name: string;
 
@@ -17,6 +18,11 @@ class Api extends Base {
 
   @Column()
   protocol: string;
+
+  @OneToMany(() => Folder, (folder) => folder.api, {
+    cascade: true,
+  })
+  folders: Folder[];
 
   get url() {
     return `${this.protocol}://${this.host}:${this.port}`;

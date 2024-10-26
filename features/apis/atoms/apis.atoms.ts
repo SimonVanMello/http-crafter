@@ -18,8 +18,11 @@ export const apiAtom = (id: string) =>
   atomWithQuery(
     () => ({
       queryKey: ['apis', id],
-      queryFn: async ({ queryKey: [, id] }) => {
-        const api = await Api.findOneBy({ id });
+      queryFn: async () => {
+        const api = await Api.findOne({
+          where: { id },
+          relations: ['folders'],
+        });
 
         return api;
       },

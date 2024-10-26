@@ -33,6 +33,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7241fdc6-1f30-4738-a11a-fd479504e380"
+      }
+    },
+    "owner": "tropico"
   }
 }

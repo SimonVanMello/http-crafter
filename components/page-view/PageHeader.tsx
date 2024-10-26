@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Href } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 import useColorMode from '@app/hooks/useColorMode.hook';
@@ -8,15 +9,16 @@ import { Box } from '../gluestack-ui/box';
 import { Heading } from '../gluestack-ui/heading';
 import BackButton from '../navigation/BackButton';
 
-interface Props {
+interface Props<T extends string | object> {
   title?: string;
   centerTitle?: boolean;
   showBackButton?: boolean;
+  backButtonHref?: Href<T>;
   actions?: ReactNode;
 }
 
-const PageHeader = (props: Props) => {
-  const { title, centerTitle, showBackButton, actions } = props;
+const PageHeader = <T extends string | object>(props: Props<T>) => {
+  const { title, centerTitle, showBackButton, backButtonHref, actions } = props;
 
   const { invertedColorMode } = useColorMode();
 
@@ -33,7 +35,7 @@ const PageHeader = (props: Props) => {
       <StatusBar style={invertedColorMode} />
       {showBackButton && (
         <Box className="flex flex-row justify-between">
-          <BackButton className="w-fit justify-start" />
+          <BackButton className="w-fit justify-start" href={backButtonHref} />
           <Box>{actions}</Box>
         </Box>
       )}

@@ -27,6 +27,7 @@ const CreateApiScreen = () => {
   const handleSubmit = async (values: CreateApi) => {
     try {
       const api = Api.fromCreateApi(values);
+      api.folders = [];
       await mutateAsync(api);
       router.push('/apis');
     } catch {
