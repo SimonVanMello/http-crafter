@@ -23,12 +23,15 @@ export const createFolderAtom = atomWithMutation(() => ({
   mutationFn: async (folder: Folder) => {
     await folder.save();
   },
-  onSuccess: () => {
-    queryClient.invalidateQueries({
-      queryKey: ['folders'],
-    });
-    queryClient.invalidateQueries({
-      queryKey: ['apis'],
-    });
+  onSuccess: (_, { parent, api }) => {
+    if (parent) {
+      queryClient.invalidateQueries({
+        queryKey: ['folders', parent.id],
+      });
+    } else if (api) {
+      queryClient.invalidateQueries({
+        queryKey: ['apis', api.id],
+      });
+    }
   },
 }));
