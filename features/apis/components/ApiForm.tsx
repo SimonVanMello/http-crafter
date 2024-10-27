@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import Field from '@app/components/form/Field';
 import Form from '@app/components/form/Form';
 import PickerField from '@app/components/form/PickerField';
-import { Divider } from '@app/components/gluestack-ui/divider';
 import Section from '@app/components/section/Section';
 import Protocol from '@app/enums/Protocol.enum';
 
@@ -29,7 +28,6 @@ const ApiForm = <T extends CreateApi>(props: Props<T>) => {
           isRequired
           autoCapitalize="sentences"
         />
-        <Divider />
         <PickerField
           label={t('features.apis.protocol')}
           name="protocol"
@@ -37,14 +35,12 @@ const ApiForm = <T extends CreateApi>(props: Props<T>) => {
           labelSelector={(item) => item}
           valueSelector={(item) => item}
         />
-        <Divider />
         <Field
           label={t('features.apis.host')}
           name="host"
           isRequired
           keyboardType="url"
         />
-        <Divider />
         <Field
           label={t('features.apis.port')}
           name="port"

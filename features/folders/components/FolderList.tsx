@@ -18,6 +18,7 @@ const FolderList = (props: Props) => {
     <Section title={t('screens.folders.title')}>
       {folders.map((folder) => (
         <SectionLink
+          key={folder.id}
           label={folder.name}
           href={`/apis/${apiId}/folders/${folder.id}`}
         />
