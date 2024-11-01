@@ -25,7 +25,7 @@ const PageHeader = <T extends string | object>(props: Props<T>) => {
   return (
     <Box
       className={cn(
-        'flex justify-center gap-2 bg-background-100 px-4 dark:bg-background-0',
+        'flex justify-center gap-2 bg-background-100 px-4 pb-2 dark:bg-background-0',
         {
           'justify-center': centerTitle && !showBackButton,
         },
@@ -42,7 +42,9 @@ const PageHeader = <T extends string | object>(props: Props<T>) => {
       {!showBackButton && (
         <Box className="flex flex-row justify-end">{actions}</Box>
       )}
-      <Heading className="text-3xl">{title}</Heading>
+      <Heading className="text-3xl" numberOfLines={1}>
+        {title}
+      </Heading>
     </Box>
   );
 };

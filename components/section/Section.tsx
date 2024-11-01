@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { Children, PropsWithChildren } from 'react';
 
 import cn from '@app/utils/cn.utils';
 
@@ -19,10 +19,10 @@ const Section = (props: PropsWithChildren<Props>) => {
         <Text className="px-4 text-md text-typography-400">{title}</Text>
       )}
       <Box className={cn('card', className)} {...rest}>
-        {React.Children.map(children, (child, index) => (
+        {Children.map(children, (child, index) => (
           <>
             {child}
-            {index < React.Children.count(children) - 1 && <Divider />}
+            {index < Children.count(children) - 1 && <Divider />}
           </>
         ))}
       </Box>

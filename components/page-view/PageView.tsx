@@ -48,7 +48,7 @@ const PageView = <T extends string | object>(
       />
       {asScrollView && (
         <ScrollView
-          contentContainerClassName={cn('px-4 pt-4 gap-4', className)}
+          contentContainerClassName={cn('px-4 pt-2 pb-4 gap-4', className)}
           refreshControl={
             canRefresh ? (
               <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
